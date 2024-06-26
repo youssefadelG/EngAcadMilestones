@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.11.9 on win32)" generated="20240626 12:29:20.260" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.11.9 on win32)" generated="20240626 18:26:37.227" rpa="false" schemaversion="3">
 <suite id="s1" name="Testing Keywords" source="C:\Users\Youssef_Mahdy\OneDrive - Dell Technologies\Documents\EngAcadMilestones\EngAcadMilestones\Testing_Keywords.robot">
-<test id="s1-t1" name="Test SSH To Server" line="11">
-<kw name="Ssh To Server" library="Keywords">
-<var>${output}</var>
-<arg>10.237.95.2</arg>
-<arg>${USERNAME}</arg>
-<arg>${PASSWORD}</arg>
+<test id="s1-t1" name="Test SSH To Server" line="6">
+<kw name="Send Command" library="Keywords">
 <arg>whoami</arg>
-<doc>SSH to a server and execute a command.</doc>
-<msg timestamp="20240626 12:29:22.652" level="INFO">${output} = youssef_mahdy
+<msg timestamp="20240626 18:26:47.212" level="INFO">root
 </msg>
-<status status="PASS" starttime="20240626 12:29:20.871" endtime="20240626 12:29:22.652"/>
+<status status="PASS" starttime="20240626 18:26:46.466" endtime="20240626 18:26:47.212"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${output}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240626 12:29:22.653" level="INFO">youssef_mahdy
+<kw name="Check Images" library="Keywords">
+<var>${back_ret_status}</var>
+<arg>academy_backend</arg>
+<msg timestamp="20240626 18:26:48.803" level="INFO">1
 </msg>
-<status status="PASS" starttime="20240626 12:29:22.652" endtime="20240626 12:29:22.653"/>
+<msg timestamp="20240626 18:26:48.803" level="INFO">${back_ret_status} = 1</msg>
+<status status="PASS" starttime="20240626 18:26:47.212" endtime="20240626 18:26:48.803"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${back_ret_status} &lt; 1</arg>
+<arg>Build Image</arg>
+<arg>academy_backend</arg>
+<arg>/root/simple-django-app</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240626 18:26:48.803" endtime="20240626 18:26:48.803"/>
+</kw>
+<kw name="Check Images" library="Keywords">
+<var>${front_ret_status}</var>
+<arg>academy_frontend</arg>
+<msg timestamp="20240626 18:26:50.268" level="INFO">1
+</msg>
+<msg timestamp="20240626 18:26:50.269" level="INFO">${front_ret_status} = 1</msg>
+<status status="PASS" starttime="20240626 18:26:48.803" endtime="20240626 18:26:50.269"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${front_ret_status} &lt; 1</arg>
+<arg>Build Image</arg>
+<arg>academy_frontend</arg>
+<arg>/root/simple-django-app</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240626 18:26:50.269" endtime="20240626 18:26:50.270"/>
 </kw>
 <doc>Verify SSH To Server is working fine</doc>
 <tag>Milestone2</tag>
-<status status="PASS" starttime="20240626 12:29:20.870" endtime="20240626 12:29:22.653"/>
+<status status="PASS" starttime="20240626 18:26:46.466" endtime="20240626 18:26:50.271"/>
 </test>
 <doc>This suite consists of testing the methods in Keywords</doc>
-<status status="PASS" starttime="20240626 12:29:20.268" endtime="20240626 12:29:22.655"/>
+<status status="PASS" starttime="20240626 18:26:37.227" endtime="20240626 18:26:50.272"/>
 </suite>
 <statistics>
 <total>
